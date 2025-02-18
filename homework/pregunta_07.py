@@ -6,6 +6,9 @@ librerias de pandas para resolver las preguntas.
 """
 
 
+import pandas as pd
+import os
+
 def pregunta_07():
     """
     Calcule la suma de la `c2` por cada letra de la `c1` del archivo
@@ -20,3 +23,11 @@ def pregunta_07():
     E    67
     Name: c2, dtype: int64
     """
+    script_path = os.path.dirname(os.path.abspath(__file__))
+    tsv_path = os.path.join(script_path, "..", "files\input", "tbl0.tsv")
+    
+    df = pd.read_csv(tsv_path, sep="\t")
+    
+    resultado = df.groupby("c1")["c2"].sum()
+    return resultado
+

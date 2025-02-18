@@ -6,6 +6,9 @@ librerias de pandas para resolver las preguntas.
 """
 
 
+import pandas as pd
+import os
+
 def pregunta_11():
     """
     Construya una tabla que contenga `c0` y una lista separada por ',' de
@@ -22,3 +25,26 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
+    # Construir la ruta al archivo tbl1.tsv
+    script_path = os.path.dirname(os.path.abspath(__file__))
+    tsv_path = os.path.join(script_path, "..", "files\input", "tbl1.tsv")
+    
+    # Leer el archivo TSV
+    df = pd.read_csv(tsv_path, sep="\t")
+    
+    # Función para combinar los valores de c4 para cada grupo:
+    # se separa cada cadena por comas, se obtienen los valores únicos,
+    # se ordenan alfabéticamente y se unen con comas.
+    def combine_values(series):
+        values = set()
+        for s in series:
+            for letter in s.split(","):
+                values.add(letter)
+        return ",".join(sorted(values))
+    
+    # Agrupar por 'c0' y combinar los valores de 'c4'
+    df_grouped = df.groupby("c0")["c4"].apply(combine_values).reset_index()
+    
+    return df_grouped
+
+

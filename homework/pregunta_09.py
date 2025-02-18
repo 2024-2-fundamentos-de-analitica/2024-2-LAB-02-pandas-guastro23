@@ -6,6 +6,9 @@ librerias de pandas para resolver las preguntas.
 """
 
 
+import pandas as pd
+import os
+
 def pregunta_09():
     """
     Agregue el año como una columna al dataframe que contiene el archivo
@@ -21,5 +24,14 @@ def pregunta_09():
     37  37  C   9  1997-07-22  1997
     38  38  E   1  1999-09-28  1999
     39  39  E   5  1998-01-26  1998
-
     """
+    script_path = os.path.dirname(os.path.abspath(__file__))
+    tsv_path = os.path.join(script_path, "..", "files\input", "tbl0.tsv")
+    
+    df = pd.read_csv(tsv_path, sep="\t")
+    
+    # Extraer el año como cadena a partir de la columna c3
+    df["year"] = df["c3"].str[:4]
+    
+    return df
+

@@ -6,10 +6,13 @@ librerias de pandas para resolver las preguntas.
 """
 
 
+import pandas as pd
+import os
+
 def pregunta_12():
     """
     Construya una tabla que contenga `c0` y una lista separada por ','
-    de los valores de la columna `c5a`  y `c5b` (unidos por ':') de la
+    de los valores de la columna `c5a` y `c5b` (unidos por ':') de la
     tabla `tbl2.tsv`.
 
     Rta/
@@ -22,3 +25,25 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
+    # Construir la ruta al archivo tbl2.tsv
+    script_path = os.path.dirname(os.path.abspath(__file__))
+    tsv_path = os.path.join(script_path, "..", "files\input", "tbl2.tsv")
+    
+    # Leer el archivo TSV
+    df = pd.read_csv(tsv_path, sep="\t")
+    
+    # Crear una columna que combine c5a y c5b con ':' (por ejemplo, "bbb:0")
+    df["pair"] = df["c5a"].astype(str) + ":" + df["c5b"].astype(str)
+    
+    # Agrupar por c0 y, para cada grupo, ordenar los valores de 'pair' alfabéticamente
+    # y unirlos con ','.
+    grouped = (
+        df.groupby("c0")["pair"]
+          .apply(lambda x: ",".join(sorted(x)))
+          .reset_index()
+    )
+    
+    # Renombrar la columna resultante a 'c5'
+    grouped = grouped.rename(columns={"pair": "c5"})
+    
+    return grouped

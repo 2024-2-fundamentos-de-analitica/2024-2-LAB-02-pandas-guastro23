@@ -6,6 +6,9 @@ librerias de pandas para resolver las preguntas.
 """
 
 
+import pandas as pd
+import os
+
 def pregunta_06():
     """
     Retorne una lista con los valores unicos de la columna `c4` del archivo
@@ -13,5 +16,17 @@ def pregunta_06():
 
     Rta/
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+     """
+    script_path = os.path.dirname(os.path.abspath(__file__))
+    tsv_path = os.path.join(script_path, "..", "files\input", "tbl1.tsv")
+    
+    # Leer el archivo tsv
+    df = pd.read_csv(tsv_path, sep="\t")
+    
+    # Obtener los valores únicos en mayúsculas y ordenarlos alfabéticamente
+    unique_vals = sorted(df["c4"].str.upper().unique())
+    
+    return unique_vals
 
-    """
+
+
