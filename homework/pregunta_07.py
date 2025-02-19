@@ -24,7 +24,7 @@ def pregunta_07():
     Name: c2, dtype: int64
     """
     script_path = os.path.dirname(os.path.abspath(__file__))
-    tsv_path = os.path.join(script_path, "..", "files\\input", "tbl0.tsv")
+    tsv_path = os.path.join(script_path, "..", "files", "input", "tbl0.tsv")
     
     df = pd.read_csv(tsv_path, sep="\t")
     

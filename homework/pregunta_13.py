@@ -24,8 +24,8 @@ def pregunta_13():
     Name: c5b, dtype: int64
     """
     script_path = os.path.dirname(os.path.abspath(__file__))
-    tbl0_path = os.path.join(script_path, "..", "files\\input", "tbl0.tsv")
-    tbl2_path = os.path.join(script_path, "..", "files\\input", "tbl2.tsv")
+    tbl0_path = os.path.join(script_path, "..", "files", "input", "tbl0.tsv")
+    tbl2_path = os.path.join(script_path, "..", "files", "input", "tbl2.tsv")
     
     # Leer los archivos
     df0 = pd.read_csv(tbl0_path, sep="\t")

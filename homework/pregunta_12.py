@@ -27,7 +27,7 @@ def pregunta_12():
     """
     
     script_path = os.path.dirname(os.path.abspath(__file__))
-    tsv_path = os.path.join(script_path, "..", "files\\input", "tbl2.tsv")
+    tsv_path = os.path.join(script_path, "..", "files", "input", "tbl2.tsv")
     
     # Leer el archivo TSV
     df = pd.read_csv(tsv_path, sep="\t")
