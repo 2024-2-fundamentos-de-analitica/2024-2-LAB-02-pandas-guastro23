@@ -26,7 +26,7 @@ def pregunta_08():
      """
     # Construir la ruta al archivo tbl0.tsv
     script_path = os.path.dirname(os.path.abspath(__file__))
-    tsv_path = os.path.join(script_path, "..", "files\input", "tbl0.tsv")
+    tsv_path = os.path.join(script_path, "..", "files\\input", "tbl0.tsv")
     
     # Leer el archivo TSV utilizando pandas
     df = pd.read_csv(tsv_path, sep="\t")

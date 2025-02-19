@@ -24,7 +24,7 @@ def pregunta_10():
     E   1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
     script_path = os.path.dirname(os.path.abspath(__file__))
-    tsv_path = os.path.join(script_path, "..", "files\input", "tbl0.tsv")
+    tsv_path = os.path.join(script_path, "..", "files\\input", "tbl0.tsv")
     
     # Leer el archivo TSV
     df = pd.read_csv(tsv_path, sep="\t")

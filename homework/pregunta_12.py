@@ -25,9 +25,9 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    # Construir la ruta al archivo tbl2.tsv
+    
     script_path = os.path.dirname(os.path.abspath(__file__))
-    tsv_path = os.path.join(script_path, "..", "files\input", "tbl2.tsv")
+    tsv_path = os.path.join(script_path, "..", "files\\input", "tbl2.tsv")
     
     # Leer el archivo TSV
     df = pd.read_csv(tsv_path, sep="\t")
